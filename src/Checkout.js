@@ -2,16 +2,22 @@ import React from 'react';
 import './Checkout.css';
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
-
+import Subtotal from './Subtotal';
 
 function Checkout() {
     const [{basket}]=useStateValue();
+
     return (
         <div className="checkout">
-            <img
-             className="checkout_banner"
-             src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg"
-             alt="ad_banner"/>
+            <div className="productList">
+                <img
+                className="checkout_banner"
+                src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_v2_1x._CB432458380_.jpg"
+                alt="ad_banner"/>
+                
+            
+
+
             <div className="checkout_items">
                 {(basket.length===0)
                 ?(
@@ -37,6 +43,13 @@ function Checkout() {
                 )}
                 
             </div>
+            </div>
+            {(basket.length)&&
+                (
+                <div className="checkout_subtotal">
+                    <Subtotal/>
+                </div>
+                )}
         </div>
     )
 }
